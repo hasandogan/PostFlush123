@@ -2,8 +2,9 @@ FROM php:8.1-fpm
 
 RUN apt-get update \
     &&  apt-get install -y --no-install-recommends \
-        locales apt-utils git libicu-dev g++ libpng-dev libxml2-dev libzip-dev libonig-dev libxslt-dev unzip libpq-dev nodejs npm wget \
-        apt-transport-https lsb-release ca-certificates
+        locales apt-utils libicu-dev g++ libpng-dev libxml2-dev libzip-dev libonig-dev libxslt-dev unzip libpq-dev nodejs npm wget \
+        apt-transport-https lsb-release ca-certificates \
+        postgresql postgresql-contrib
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen  \
     &&  echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen \
