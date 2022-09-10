@@ -4,9 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class messageController extends AbstractController
@@ -23,7 +22,7 @@ class messageController extends AbstractController
         $entityManager->persist($message);
         $entityManager->flush();
 
-
+        return new response("kayıt basarli.");
     }
 
 }

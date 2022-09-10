@@ -6,6 +6,7 @@ use App\Repository\MessageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MessageRepository::class)]
+#[ORm\HasLifecycleCallbacks]
 class Message
 {
     #[ORM\Id]
@@ -74,11 +75,10 @@ class Message
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    #[ORM\PrePersist]
+    public function setCreatedAt(): void
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getUpdateAt(): ?\DateTimeImmutable
@@ -86,10 +86,9 @@ class Message
         return $this->updateAt;
     }
 
-    public function setUpdateAt(\DateTimeImmutable $updateAt): self
+    #[ORM\PrePersist]
+    public function setUpdateAt(): void
     {
-        $this->updateAt = $updateAt;
-
-        return $this;
+        $this->updateAt = new \DateTimeImmutable();
     }
 }
