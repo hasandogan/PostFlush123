@@ -25,4 +25,12 @@ class messageController extends AbstractController
         return new response("kayıt basarli.");
     }
 
+    #[Route('/index', name: 'index')]
+    public function index(ManagerRegistry $doctrine){
+        $em = $doctrine->getManagers();
+
+        $messageRepository = $em->getRepo
+        return $this->render('index.html.twig');
+    }
+
 }
